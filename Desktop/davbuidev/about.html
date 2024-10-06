@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | David Bui</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        /* Profile picture styling */
+        .profile-pic {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        /* Profile picture hover effect */
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        /* Scroll to top button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+            z-index: 100;
+        }
+
+        /* Smooth scrolling effect */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hover effect for navigation links */
+        nav ul li a {
+            transition: color 0.3s ease, background 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #ff9900;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Additional styling for sections */
+        #skills {
+            margin-top: 30px;
+        }
+
+        /* Styling for the projects link */
+        .projects-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff9900;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .projects-link:hover {
+            background-color: #e68a00;
+        }
+
+        /* New styles for the about section layout */
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .about-image {
+            flex: 1;
+            max-width: 40%;
+        }
+
+        .about-text {
+            flex: 2;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-text:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                max-width: 100%;
+            }
+        }
+
+        /* Typing effect styles */
+        #typing-text {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li> <!-- Active page -->
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <div class="container about-container">
+        <h2 id="typing-text"></h2>
+        <h2 class="section-title">About</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="images/outfit.jpg" alt="David Bui" class="profile-pic">
+            </div>
+            <div class="about-text">
+                <h3 id="greeting"></h3>
+                <p>I'm an undergraduate student at UC Berkeley, studying Mechanical Engineering and Data Science.
+                </p>
+                <p>Over the past 4+ years, I have gained hands-on experience applying machine learning techniques,
+                    particularly through predictive modeling to enhance medical technology. Currently, I am pursuing
+                    a master's in computer science with a focus on ML & AI, where I aim to push in healthcare and to
+                    deliver more accurate diagnostics. I will complete my Bachelor of Science in <strong>May
+                        2025</strong></p>
+                <p><strong>Sports:</strong> Soccer, Tennis, and Golfing</p>
+                <p><strong>Hobbies:</strong> Singing, Music Editing, Video Editing, and Graphic Design</p>
+                <p>My current research involves leveraging machine learning, parallel processing, and generating
+                    large datasets for predictive modeling and data-driven solutions. Last summer, I was a Technical
+                    Project Manager Intern at Tesla, where I optimized battery production processes using Python
+                    scripts, SQL, and machine learning for real-time analytics.</p>
+                <p>I also led a data engineering project at the National Research Laboratory, where I developed
+                    computational models to improve Naval deployment prediction systems, utilizing machine learning
+                    algorithms and data visualization techniques to enhance decision-making.</p>
+                <a href="https://sites.google.com/berkeley.edu/david-bui?usp=sharing" class="projects-link"
+                    target="_blank">View More Projects</a>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container skills-container">
+            <h2 class="section-title">Skills</h2>
+            <p id="skills-intro"></p>
+            <div class="skills-list">
+                <div class="skill">
+                    <p>Languages: Matlab, C/C++, Java, Python</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 85%;"></div>
+                    </div>
+                    <span class="percentage">85%</span>
+                </div>
+                <div class="skill">
+                    <p><strong>Full Stack Development:</strong> HTML, CSS, JavaScript</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 90%;"></div>
+                    </div>
+                    <span class="percentage">90%</span>
+                </div>
+                <div class="skill">
+                    <p><strong>Graphic Design & Digital Media:</strong> Wireframing, Figma, Canva, Adobe Photoshop,
+                        Adobe Illustrator, Adobe After Effects</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 95%;"></div>
+                    </div>
+                    <span class="percentage">95%</span>
+                </div>
+                <div class="skill">
+                    <p><strong>Bilingual:</strong> English and Vietnamese</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 100%;"></div>
+                    </div>
+                    <span class="percentage">100%</span>
+                </div>
+                <div class="skill">
+                    <p><strong>Technical Experience:</strong> SolidWorks, Fusion 360, Gazebo, ROS, Git, Tableau, Power
+                        BI, Jupyter, SQL, Jira</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%;"></div>
+                    </div>
+                    <span class="percentage">70%</span>
+                </div>
+                <div class="skill">
+                    <p>Hardware: Arduino, Raspberry Pi, Soldering, 3D Printing, CNC Milling, Laser Cutting, PCB Design
+                    </p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 90%;"></div>
+                    </div>
+                    <span class="percentage">90%</span>
+                </div>
+                <div class="skill">
+                    <p>Soft Skills: Leadership, Communication, Presentation, Project Management, Product Management</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 100%;"></div>
+                    </div>
+                    <span class="percentage">100%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top-btn" id="scrollTopBtn">Top</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Developed by David Bui</p>
+    </footer>
+
+    <script>
+        // Greeting animation
+        const greeting = document.getElementById('greeting');
+        const greetingText = "Hey there! I'm David Bui";
+
+        // Skills intro animation
+        const skillsIntro = document.getElementById('skills-intro');
+        const skillsIntroText = "A list of technical and social expertise that I have picked up over the years.";
+
+        function typeWriter(text, element, speed = 100) {
+            let i = 0;
+            element.textContent = '';
+            return new Promise((resolve) => {
+                const timer = setInterval(() => {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(timer);
+                        resolve();
+                    }
+                }, speed);
+            });
+        }
+
+        async function animateGreeting() {
+            await typeWriter(greetingText, greeting);
+        }
+
+        async function animateSkillsIntro() {
+            await typeWriter(skillsIntroText, skillsIntro);
+        }
+
+        animateGreeting();
+        animateSkillsIntro();
+
+        // Scroll animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.about-text p, .skill').forEach((element, index) => {
+            gsap.from(element, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        gsap.from('.profile-pic', {
+            opacity: 0,
+            scale: 0.8,
+            duration: 1,
+            scrollTrigger: {
+                trigger: '.profile-pic',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        gsap.from('.progress-bar', {
+            width: 0,
+            duration: 1.5,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.skills-list',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Scroll-to-top functionality
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollTopBtn.style.display = "block";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+
+        scrollTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+
+</html>

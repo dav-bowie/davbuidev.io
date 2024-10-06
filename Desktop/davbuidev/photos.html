@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos | David Bui</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        .photo-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .photo-buttons button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .photo-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .photo-grid {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-grid.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .photo-item {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .photo-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* New styles for the vertical timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #007bff;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #007bff;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .ingredients {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        /* Styles for David's photo timeline gallery */
+        .timeline-gallery {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .timeline-photo {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-photo:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="photos.html" class="active">Photos</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Photo Gallery</h2>
+        <div class="photo-buttons">
+            <button id="main-gallery-btn">Main Gallery</button>
+            <button id="cooking-btn">Cooking</button>
+        </div>
+        <div id="photo-grid" class="photo-grid">
+            <!-- Photo items will be dynamically added here -->
+        </div>
+        <div id="cooking-timeline" class="timeline" style="display: none;">
+            <!-- Cooking timeline entries will be dynamically added here -->
+        </div>
+    </div>
+
+    <footer>
+        <p>Developed by David Bui</p>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const photoGrid = document.getElementById('photo-grid');
+        const cookingBtn = document.getElementById('cooking-btn');
+        const mainGalleryBtn = document.getElementById('main-gallery-btn');
+
+        const cookingPhotos = [
+            'cooking1.jpg', 'cooking2.jpg', 'cooking3.jpg', 'cooking4.jpg'
+        ];
+
+        const mainGalleryPhotos = [
+            'generalphotos/1.jpg',
+            'generalphotos/2.jpg',
+            'generalphotos/3.jpg',
+            'generalphotos/4.jpg',
+            'generalphotos/5.jpg',
+            'generalphotos/6.jpg',
+            'generalphotos/7.jpg'
+        ];
+
+        function loadPhotos(photos) {
+            photoGrid.innerHTML = '';
+            photos.forEach((photo, index) => {
+                const photoItem = document.createElement('div');
+                photoItem.classList.add('photo-item');
+                photoItem.innerHTML = `<img src="${photo}" alt="Photo ${index + 1}">`;
+                photoGrid.appendChild(photoItem);
+
+                gsap.from(photoItem, {
+                    opacity: 0,
+                    scale: 0.9,
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    scrollTrigger: {
+                        trigger: photoItem,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    }
+                });
+            });
+
+            gsap.from(photoGrid, {
+                opacity: 0,
+                y: 20,
+                duration: 0.5,
+                scrollTrigger: {
+                    trigger: photoGrid,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            photoGrid.style.display = 'grid';
+            photoGrid.classList.add('visible');
+        }
+
+        const cookingTimeline = document.getElementById('cooking-timeline');
+
+        const cookingEntries = [
+            {
+                title: "Homemade Pizza",
+                date: "2023-03-20",
+                description: "Crafted a delicious pizza from scratch with a crispy crust and fresh toppings.",
+                ingredients: ["Pizza dough", "Tomato sauce", "Mozzarella cheese", "Mushrooms", "Bell peppers", "Onions"],
+                images: ["foodphotos/notcookedpizza.jpg", "foodphotos/cookedmushroompizza.jpg", "foodphotos/cookedpizza.jpg"]
+            },
+            {
+                title: "Lava Cake",
+                date: "2023-02-14",
+                description: "Indulgent chocolate lava cake with a gooey center for Valentine's Day.",
+                ingredients: ["Dark chocolate", "Butter", "Eggs", "Sugar", "Flour", "Vanilla extract"],
+                images: ["foodphotos/lavacake.jpg", "foodphotos/lavvacake.jpg"]
+            },
+            {
+                title: "Sourdough Bread",
+                date: "2023-01-15",
+                description: "Baked a crusty sourdough bread with a perfectly tangy flavor.",
+                ingredients: ["Sourdough starter", "Bread flour", "Water", "Salt"],
+                image: "foodphotos/sourdough_bread.jpg"
+            },
+            {
+                title: "Chocolate Chip Cookies",
+                date: "2023-04-05",
+                description: "Baked classic chocolate chip cookies with a perfect balance of crispy edges and chewy centers.",
+                ingredients: ["Butter", "Sugar", "Brown sugar", "Eggs", "Vanilla extract", "Flour", "Baking soda", "Salt", "Chocolate chips"],
+                image: "foodphotos/chocolate_chip_cookies.jpg"
+            },
+            {
+                title: "Perfectly Grilled Steak",
+                date: "2023-05-28",
+                description: "Grilled a juicy steak to medium-rare perfection with a flavorful crust.",
+                ingredients: ["Ribeye steak", "Salt", "Black pepper", "Garlic powder", "Olive oil"],
+                image: "foodphotos/grilled_steak.jpg"
+            },
+            {
+                title: "Bún Bò Huế",
+                date: "2023-06-10",
+                description: "Prepared a spicy and aromatic Vietnamese beef noodle soup from Huế.",
+                ingredients: ["Beef shank", "Pork hocks", "Rice noodles", "Lemongrass", "Shrimp paste", "Annatto seeds", "Bean sprouts", "Lime"],
+                image: "foodphotos/bun_bo_hue.jpg"
+            },
+            {
+                title: "Phở",
+                date: "2023-07-22",
+                description: "Made a comforting bowl of Vietnamese phở with a rich, flavorful broth.",
+                ingredients: ["Beef bones", "Rice noodles", "Beef slices", "Onion", "Ginger", "Star anise", "Cinnamon", "Bean sprouts", "Thai basil"],
+                image: "foodphotos/pho.jpg"
+            },
+            {
+                title: "Bún Thịt Nướng",
+                date: "2023-08-15",
+                description: "Prepared a refreshing Vietnamese grilled pork with vermicelli noodles and herbs.",
+                ingredients: ["Pork shoulder", "Fish sauce", "Lemongrass", "Garlic", "Shallots", "Rice vermicelli", "Lettuce", "Cucumber", "Pickled carrots"],
+                image: "foodphotos/bun_thit_nuong.jpg"
+            }
+        ];
+
+        function createCookingTimeline(entries) {
+            photoGrid.style.display = 'none';
+            cookingTimeline.style.display = 'block';
+            cookingTimeline.innerHTML = '';
+
+            entries.forEach((entry, index) => {
+                const timelineItem = document.createElement('div');
+                timelineItem.classList.add('timeline-item', index % 2 === 0 ? 'left' : 'right');
+
+                const imagesHtml = entry.images 
+                    ? entry.images.map(img => `<img src="${img}" alt="${entry.title}" class="timeline-img">`).join('')
+                    : `<img src="${entry.image}" alt="${entry.title}" class="timeline-img">`;
+
+                const content = `
+                    <div class="timeline-content">
+                        <h3>${entry.title}</h3>
+                        <p class="date">${entry.date}</p>
+                        ${imagesHtml}
+                        <p>${entry.description}</p>
+                        <div class="ingredients">
+                            <h4>Ingredients:</h4>
+                            <ul>
+                                ${entry.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+
+                timelineItem.innerHTML = content;
+                cookingTimeline.appendChild(timelineItem);
+
+                gsap.from(timelineItem, {
+                    opacity: 0,
+                    x: index % 2 === 0 ? -50 : 50,
+                    duration: 0.5,
+                    delay: index * 0.2,
+                    scrollTrigger: {
+                        trigger: timelineItem,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    }
+                });
+            });
+        }
+
+        cookingBtn.addEventListener('click', () => {
+            photoGrid.style.display = 'none';
+            createCookingTimeline(cookingEntries);
+        });
+
+        mainGalleryBtn.addEventListener('click', () => {
+            cookingTimeline.style.display = 'none';
+            photoGrid.style.display = 'grid';
+            loadPhotos(mainGalleryPhotos);
+        });
+
+        // Load main gallery by default
+        loadPhotos(mainGalleryPhotos);
+    </script>
+</body>
+
+</html>

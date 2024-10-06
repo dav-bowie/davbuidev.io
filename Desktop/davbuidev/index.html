@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Bui | Home</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <style>
+        .highlight {
+            background-color: white;
+            color: #007bff;
+            /* Changed text color to a readable blue */
+            padding: 2px 5px;
+            border-radius: 3px;
+            display: inline-block;
+            margin: 0 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Landing Section -->
+    <section id="landing">
+        <div class="content">
+            <h1>David Bui</h1>
+            <p><strong>Biomedicine | Mechanical Engineering | AI/ML | Robotics</strong></p>
+            <p id="typed-text"></p>
+            <a href="about.html" class="btn">About Me</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Developed by David Bui</p>
+    </footer>
+
+    <script>
+        const text = "a mechanical engineer and programmer advancing health tech to fight cancer and improve lives";
+        const typedTextElement = document.getElementById('typed-text');
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                typedTextElement.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeText, 50);
+            } else {
+                highlightWords();
+            }
+        }
+
+        function highlightWords() {
+            const words = ['mechanical engineer', 'programmer', 'health', 'lives'];
+            let highlightedText = typedTextElement.innerHTML;
+
+            words.forEach(word => {
+                const regex = new RegExp(word, 'gi');
+                highlightedText = highlightedText.replace(regex, `<span class="highlight">${word}</span>`);
+            });
+
+            typedTextElement.innerHTML = highlightedText;
+        }
+
+        window.onload = typeText;
+    </script>
+
+</body>
+
+</html>

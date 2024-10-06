@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | David Bui</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main CSS file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        .resume-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .resume-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li> <!-- Add class 'active' for active page -->
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="container">
+            <h2>Resume</h2>
+
+            <!-- Summary Section -->
+            <div class="resume-section">
+                <h3>Summary</h3>
+                <p>I'm a driven UC Berkeley student with a passion for combining engineering, data science, and machine
+                    learning to solve complex problems. With over 4+ years of hands-on experience, I’m especially
+                    interested in applying machine learning to the biomedical field, using predictive modeling to
+                    improve medical technologies and patient outcomes. I’m excited about the potential of integrating
+                    these disciplines to create innovative solutions that can make a real difference in people’s lives.
+                </p>
+            </div>
+
+            <!-- Education Section -->
+            <div class="resume-section">
+                <h3>Education</h3>
+                <h4>University of California, Berkeley</h4>
+                <p><strong>Expected Graduation Date: May 2025</strong><br>Bachelor of Science in Mechanical Engineering
+                    & Minor in Data Science<br>Current GPA: 3.52/4.0</p>
+            </div>
+
+            <!-- Professional Experience Section -->
+            <div class="resume-section">
+                <h3>Professional Experience</h3>
+
+                <h4>Technical Project Manager Intern | Tesla, Fremont, CA</h4>
+                <p><strong>Jan. 2024 - May 2024</strong><br>
+                    • Developed automated Python scripts for real-time analytics in battery production, improving
+                    project life-cycle by 25%<br>
+                    • Optimized database queries using SQL, reducing 30% in data retrieval times for manufacturing
+                    insight<br>
+                    • Revamped Tesla's internal UI & UX via Figma, accelerating project completion rates by 15% for 50+
+                    employees<br>
+                    • Managed 100+ Jira tickets, streamlining bug fixing for development teams<br>
+                    • Led machine learning model integration for anomaly detection, reducing potential failures by
+                    20%<br>
+                </p>
+
+                <h4>Data Engineer | National Research Laboratory, Washington D.C.</h4>
+                <p><strong>May 2022 - Aug. 2022</strong><br>
+                    • Led 14 R&D projects, developing computational models to improve Naval deployment prediction
+                    systems, utilizing machine learning techniques such as regression models & SVM<br>
+                    • Applied machine learning algorithms, including k-nearest neighbors (KNN) and decision trees, to
+                    simulate turbulent fluid dynamics, achieving a 20% increase in prediction accuracy<br>
+                    • Analyzed Naval lab datasets using Python's Pandas & NumPy libraries, improving data throughput by
+                    10%<br>
+                    • Presented technical reports & data visualizations weekly, improving decision-making for
+                    stakeholders and leading to a 15% improvement in forecasting accuracy<br>
+                </p>
+
+                <h4>Engineering Consultant | Sutardja Center for Entrepreneurship & Technology, Berkeley, CA</h4>
+                <p><strong>May 2022 - Aug. 2022</strong><br>
+                    • Used Python for 5-year financial forecast & visualizations to inform critical business decisions &
+                    product launches<br>
+                    • Collaborated with stakeholders, accessing technical requirements for product development using
+                    Agile methodologies<br>
+                    • Consulted 3 start-up companies on product design, leveraging data-driven insights & statistical
+                    models for risk analysis<br>
+                </p>
+                <h4>Engineering Intern | The Boeing Company | Huntington Beach, CA</h4>
+                <p><strong>June 2020 - Aug. 2020</strong><br>
+                    • Designed and implemented a 3D model of the Boeing 737 MAX's landing gear strut using SolidWorks,
+                    enhancing the engineering team's visualization and analysis capabilities<br>
+                    • Utilized MATLAB for stress analysis, simulating the strut's behavior under various loading
+                    conditions to ensure structural integrity and safety<br>
+                    • Conducted parametric studies to optimize the strut's design, resulting in a 10% reduction in
+                    weight
+                    while maintaining the same level of safety and performance<br>
+                    • Led a cross-functional team in collaboration with SpaceX stakeholders to design and implement
+                    innovative space debris
+                    retrieval methods, improving space safety and operational efficiency.<br>
+                    • Developed and optimized satellite simulations using C/C++ and Satellite Tool Kit (STK) to model
+                    real-time space debris
+                    trajectories, enhancing predictive accuracy by 30%.<br>
+                    • Integrated front-end solutions for simulation platforms using HTML, CSS, and JavaScript, creating
+                    interactive interfaces
+                    for engineers to visualize data and modify parameters in real time.<br>
+                </p>
+
+            </div>
+
+            <!-- Extracurricular Experience Section -->
+            <div class="resume-section">
+                <h3>Research Experience</h3>
+
+                <h4>GLOBE Ambassadors | Product Management, Berkeley Engineering</h4>
+                <p><strong>March 2022 - May 2022</strong><br>
+                    • Evaluated company partnerships and conducted risk analysis for company development in Silicon
+                    Valley<br>
+                    • Specialized in supply chain & operations and created market entrance strategies for NADI
+                    System<br>
+                    • Used Python for 5-year financial forecast & visualizations to inform critical business decisions &
+                    product launches<br>
+                    • Collaborated with stakeholders, accessing technical requirements for product development using
+                    Agile methodologies<br>
+                    • Consulted 3 start-up companies on product design, leveraging data-driven insights & statistical
+                    models for risk analysis
+                </p>
+
+                <h4>Mechanical Engineering Research Assistant | Berkeley Fire Lab</h4>
+                <p><strong>Sept. 2021 – Feb. 2022</strong><br>
+                    • Led hands-on research on combustion and heat transfer, analyzing over 50 combustion experiments
+                    involving fluid mechanics and decomposition heat transfer <br>
+                    • Processed and cleaned 10,000+ data points using Python and machine learning algorithms, improving
+                    data accuracy by 15% for infrared heat monitoring and fluid dynamics modeling <br>
+                    • Developed and trained machine learning models to automate data analysis, reducing manual
+                    processing time by 30% and increasing predictive accuracy in thermodynamic research <br>
+                    • Designed and executed block heat combustion experiments, utilizing materials science and heat
+                    transfer principles, achieving a 12% improvement in experimental consistency <br>
+                    • Applied fluid dynamics theory in combination with machine learning for combustion experiments,
+                    enhancing the predictive accuracy of heat transfer models by 18% and providing deeper insights into
+                    fire science problems
+                </p>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="resume-section">
+                <h3>Skills</h3>
+                <ul>
+                    <li>Languages: Matlab, C/C++, Java, Python</li>
+                    <li>Full Stack Development: HTML, CSS, JavaScript</li>
+                    <li>Graphic Design & Digital Media: Figma, Canva, Adobe Photoshop, Adobe Illustrator, Adobe After
+                        Effects</li>
+                    <li>Bilingual: English and Vietnamese</li>
+                    <li>Technical Experience: SolidWorks, Fusion 360, Gazebo, ROS, Git, Tableau, Power BI, Jupyter, SQL,
+                        Jira</li>
+                    <li>Hardware: Arduino, Raspberry Pi, Soldering, 3D Printing, CNC Milling, Laser Cutting, PCB Design
+                    </li>
+                    <li>Soft Skills: Leadership, Communication, Presentation, Project Management, Product Management
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Awards and Certifications Section -->
+            <div class="resume-section">
+                <h3>Awards and Certifications</h3>
+                <ul>
+                    <li>DES INV 15 - Best Desgin – 2023</li>
+                    <li>Adidas Scholarship Awardee Recipient – 2021</li>
+                    <li>University of California, Berkeley College of Engineering Dean's Honors List – 2021, 2022, 2023
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Developed by David Bui</p>
+    </footer>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.resume-section').forEach((section, i) => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: 'top 80%',
+                end: 'bottom 20%',
+                markers: false,
+                onEnter: () => section.classList.add('visible'),
+                onLeaveBack: () => section.classList.remove('visible')
+            });
+        });
+    </script>
+
+</body>
+
+</html>

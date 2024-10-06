@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | David Bui</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #f0f0f0;
+            /* Light gray background on hover */
+        }
+
+        .project-info {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 12px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.3s ease;
+        }
+
+        .project-card.visible .project-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover .project-info {
+            background-color: rgba(240, 240, 240, 0.9);
+            /* Light gray background on hover */
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover h3 {
+            color: #007bff;
+            /* Change title color on hover */
+        }
+
+        .project-card p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover p {
+            color: #555;
+            /* Slightly darker text on hover */
+        }
+
+        /* New styles for the "More Projects" button */
+        .more-projects-btn {
+            display: block;
+            width: fit-content;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 10px auto 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .more-projects-btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .more-projects-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>Projects</h2>
+        <p>Over the years, I have developed and managed many projects that optimize today's world with innovative
+            solutions in technology. Below is a list of some key projects:</p>
+        <a href="https://sites.google.com/berkeley.edu/david-bui?usp=sharing" target="_blank"
+            class="more-projects-btn">Click here to check out more about the work I did in my projects</a>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Universal Electric Car Chargers</h3>
+                    <p>Designed an electric charging station with a 300 kW output; charges a 75-80 kWh battery in 15
+                        minutes.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Crime Analysis Prediction</h3>
+                    <p>Processed dataset of over 680,000 crime reports, applied logistic regression & machine learning
+                        to predict common crimes.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Wind Turbine Design</h3>
+                    <p>Designed rotor blades & support tower; executed FEA analysis to determine stiffness and
+                        durability.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Anti-AutoTheft Bike System</h3>
+                    <p>Developed a system to prevent bike theft using GPS tracking and motion sensors.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Smart Mirror</h3>
+                    <p>Created an interactive mirror with integrated smart home features and personal assistant
+                        capabilities.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Apple Phone Adjustable Mount</h3>
+                    <p>Designed an adjustable mount for Apple phones to enhance usability and accessibility.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Image Processing</h3>
+                    <p>Using basic machine learning models and linear algebra to process images.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Future Project</h3>
+                    <p>Stay tuned for upcoming innovative projects and solutions.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Let's Collaborate</h3>
+                    <p>Have a project idea? Let's work together to bring it to life!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 David Bui. All rights reserved.</p>
+    </footer>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <script>
+        // Intersection Observer for fade-in effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Delay the text appearance slightly
+                    setTimeout(() => {
+                        entry.target.querySelector('.project-info').style.opacity = '1';
+                        entry.target.querySelector('.project-info').style.transform = 'translateY(0)';
+                    }, 300);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // New observer for the "More Projects" button
+        const btnObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        // Observe the "More Projects" button
+        const moreProjectsBtn = document.querySelector('.more-projects-btn');
+        btnObserver.observe(moreProjectsBtn);
+    </script>
+
+</body>
+
+</html>
